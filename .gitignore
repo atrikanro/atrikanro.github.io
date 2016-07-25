@@ -1,0 +1,15 @@
+・.svnv
+/.svn/entries
+/.svn/format
+/.sass-cache
+/_bk
+/common/css/*.css
+/test
+node_modules/
+sftp-config.json
+*.bat
+*.db
+*.dll
+*.svn-base
+*.md
+*.mno

@@ -1,0 +1,49 @@
+@charset "utf-8";
+// ============================================================
+// 設定
+// ============================================================
+// SVG
+$experimental-support-for-svg: true;
+
+// Compass ブラウザサポート
+$legacy-support-for-ie6 : false;
+$legacy-support-for-ie7 : false;
+
+// falseにしてgrunt-autoprefixerで管理
+$experimental-support-for-webkit : false;
+$experimental-support-for-mozilla : false;
+$experimental-support-for-opera : false;
+$experimental-support-for-microsoft : false;
+$experimental-support-for-khtml : false;
+
+// ベンダープレフィックス サポート
+@mixin exp($property, $value,
+	$webkit		: $experimental-support-for-webkit,
+	$moz		: $experimental-support-for-mozilla,
+	$ms			: $experimental-support-for-microsoft,
+	$o			: $experimental-support-for-opera,
+	$official	: true
+) {
+	@if $webkit	and $experimental-support-for-webkit	{ -webkit-#{$property}: $value;}
+	@if $moz	and $experimental-support-for-mozilla	{    -moz-#{$property}: $value;}
+	@if $ms		and $experimental-support-for-microsoft	{     -ms-#{$property}: $value;}
+	@if $o		and $experimental-support-for-opera		{      -o-#{$property}: $value;}
+	@if $official										{         #{$property}: $value;}
+}
+
+// px定義
+$width: 900px;
+
+// device px
+$tablet-width: 960px;
+$sp-width: 768px;
+
+// border default
+$border: 2px solid #000;
+
+// 文字定義
+$font_alphabet: 'Raleway', Helvetica, Verdana;
+$font_gothic_ja: "游ゴシック", YuGothic, "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+$font_gothic: $font_alphabet, "游ゴシック", YuGothic, "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+
+// ============================================================

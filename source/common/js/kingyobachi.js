@@ -1,0 +1,5 @@
+// kingyobachi System js.
+
+$(function(){
+
+});

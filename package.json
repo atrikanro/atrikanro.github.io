@@ -1,0 +1,32 @@
+{
+  "name": "portfolio",
+  "version": "0.0.0",
+  "scripts": {
+    "default": "gulp",
+    "build": "gulp build",
+    "css": "gulp css",
+    "js": "gulp js",
+    "sprite": "gulp sprite",
+    "font": "gulp font",
+    "doc": "gulp doc"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.12.12",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-compass": "^2.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-ejs": "^2.1.1",
+    "gulp-filter": "^4.0.0",
+    "gulp-header": "^1.8.2",
+    "gulp-pleeease": "^2.0.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.3.1",
+    "gulp-shell": "^0.5.2",
+    "gulp-sourcemap": "^1.0.1",
+    "gulp-uglify": "^1.5.3",
+    "gulp-watch": "^4.3.6",
+    "gulp.spritesmith": "^4.3.0",
+    "main-bower-files": "^2.13.1"
+  }
+}

@@ -1,0 +1,111 @@
+{{#block "sprites"}}
+{{#each sprites}}
+${{strings.name_name}}: '{{name}}';
+${{strings.name_x}}: {{px.x}};
+${{strings.name_y}}: {{px.y}};
+${{strings.name_offset_x}}: {{px.offset_x}};
+${{strings.name_offset_y}}: {{px.offset_y}};
+${{strings.name_width}}: {{px.width}};
+${{strings.name_height}}: {{px.height}};
+${{strings.name_total_width}}: {{px.total_width}};
+${{strings.name_total_height}}: {{px.total_height}};
+${{strings.name_image}}: '{{{escaped_image}}}';
+${{strings.name}}: ({{px.x}}, {{px.y}}, {{px.offset_x}}, {{px.offset_y}}, {{px.width}}, {{px.height}}, {{px.total_width}}, {{px.total_height}}, '{{{escaped_image}}}', '{{name}}', );
+{{/each}}
+{{/block}}
+{{#block "spritesheet"}}
+${{spritesheet_info.strings.name_width}}: {{spritesheet.px.width}};
+${{spritesheet_info.strings.name_height}}: {{spritesheet.px.height}};
+${{spritesheet_info.strings.name_image}}: '{{{spritesheet.escaped_image}}}';
+${{spritesheet_info.strings.name_sprites}}: ({{#each sprites}}${{strings.name}}, {{/each}});
+${{spritesheet_info.strings.name}}: ({{spritesheet.px.width}}, {{spritesheet.px.height}}, '{{{spritesheet.escaped_image}}}', ${{spritesheet_info.strings.name_sprites}}, );
+{{/block}}
+
+{{#block "sprite-functions"}}
+{{#if options.functions}}
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+@mixin sprite-noImage($sprite) {
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+  @include sprite-position($sprite);
+}
+@mixin r-sprite($sprite,$div:2) {
+  width: round(nth($sprite, 5) / $div);
+  height: round(nth($sprite, 6) / $div);
+  @include sprite-image($sprite);
+  background-position: round(nth($sprite, 3) / $div) round(nth($sprite, 4) / $div);
+  background-size: round(nth($sprite, 7) / $div) round(nth($sprite, 8) / $div);
+}
+@mixin r-sprite-width($sprite,$div:2) { width: round(nth($sprite, 5) / $div);}
+@mixin r-sprite-height($sprite,$div:2) { height: round(nth($sprite, 6) / $div);}
+@mixin r-sprite-image($sprite,$div:2) {
+  @include sprite-image($sprite);
+  background-size: round(nth($sprite, 7) / $div) round(nth($sprite, 8) / $div);
+}
+@mixin r-sprite-position($sprite,$div:2) { background-position: round(nth($sprite, 3) / $div) round(nth($sprite, 4) / $div);}
+
+@mixin r-sprite-header($sprite,$div:2) {
+  width: round(nth($sprite, 5) / $div);
+  height: round(nth($sprite, 6) / $div);
+  background-position: round(nth($sprite, 3) / $div) round(nth($sprite, 4) / $div);
+}
+@mixin r-sprite-header-size($sprite,$div:2) {
+  background-size: round(nth($sprite, 7) / $div) round(nth($sprite, 8) / $div);
+}
+@mixin spriteImg($sprite,$hover:false) {
+    $spriteImg-offset-x: abs(nth($sprite, 3));
+    $spriteImg-offset-y: abs(nth($sprite, 4));
+    $spriteImg-height: nth($sprite, 6);
+    @if $hover == true {
+        $spriteImg-height: nth($sprite, 6) / 2;
+    }
+
+    overflow: hidden;
+    display: block;
+    width: nth($sprite, 5);
+    height: $spriteImg-height;
+
+    img {
+        margin: -#{$spriteImg-offset-y} 0 0 -#{$spriteImg-offset-x};
+    }
+    @if $hover == true {
+        &:hover img {
+            margin: -#{$spriteImg-offset-y + $spriteImg-height} 0 0 -#{$spriteImg-offset-x};
+        }
+    }
+}
+{{/if}}
+{{/block}}
+
+{{#block "spritesheet-functions"}}
+{{#if options.functions}}
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}
+{{/if}}
+{{/block}}

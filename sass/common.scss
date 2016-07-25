@@ -1,0 +1,99 @@
+@charset "utf-8";
+@import "include/include";
+* {
+	font-family: $font_gothic;
+}
+///////////////////////////////////////////////
+// common
+///////////////////////////////////////////////
+
+.icon {
+	&_device {
+		font-size: 12px;
+		padding: 2px 4px;
+		border: $border;
+		border-radius: 6px;
+	}
+}
+
+///////////////////////////////////////////////
+// header
+///////////////////////////////////////////////
+.header {
+	width: 100%;
+	height: 75px;
+	margin-top: -15px;
+	background-color: #000;
+	color: #fff;
+	position: fixed;
+
+	&-inner {
+		width: $width;
+		margin: 0 auto;
+	}
+	&-title {
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 80px;
+	}
+	&-nav {
+		width: 80%;
+		display: inline-block;
+		text-align: right;
+		font-size: 20px;
+
+		&-li {
+			display: inline-block;
+			vertical-align: middle;
+			padding: 0 30px;
+		}
+	}
+}
+///////////////////////////////////////////////
+// main
+///////////////////////////////////////////////
+.main {
+	background: url('/images/bg.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: top;
+	height: 1000px;
+
+	&-sec {
+		padding-top: 100px;
+		width: $width;
+		margin: 0 auto;
+	}
+	&-h2 {
+		font-size: 40px;
+		margin-bottom: 40px;
+	}
+}
+///////////////////////////////////////////////
+// Coding
+///////////////////////////////////////////////
+.coding {
+	&-list {
+		width: 100%;
+	}
+	&-cap {
+		position: relative;
+		width: 45%;
+
+		&_pc {
+			border: $border;
+			width: 100%;
+			position: absolute;
+		}
+		&_sp {
+			border: $border;
+			width: 40%;
+			position: absolute;
+		}
+	}
+	&-info {
+		width: 55%;
+	}
+
+}

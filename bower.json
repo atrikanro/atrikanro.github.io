@@ -1,0 +1,6 @@
+{
+  "name": "packages",
+  "dependencies": {
+    "jquery": "^2.2.4"
+  }
+}
